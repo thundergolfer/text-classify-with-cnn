@@ -120,7 +120,11 @@ with tf.Graph().as_default():
 
         # Output directory for models and summaries
         timestamp = str(int(time.time()))
-        out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", timestamp))
+        # Checkpoint directory will be different for each dataset.
+        if FLAGS.dataset_option and FLAGS.dataset_option == "products":
+            out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs_product", timestamp))
+        else:
+            out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", timestamp))
         print("Writing to {}\n".format(out_dir))
 
         # Summaries for accuracy and loss
@@ -138,11 +142,7 @@ with tf.Graph().as_default():
         dev_summary_writer = tf.train.SummaryWriter(dev_summary_dir, sess.graph)
 
         # Checkpoint directory. Tensorflow assumes this directory already exists so we need to create it
-        # Checkpoint directory will be different for each dataset.
-        if FLAGS.dataset_option and FLAGS.dataset_option == "products":
-            checkpoint_dir = os.path.abspath(os.path.join(out_dir, "product_checkpoints"))
-        else:
-            checkpoint_dir = os.path.abspath(os.path.join(out_dir, "checkpoints"))
+        checkpoint_dir = os.path.abspath(os.path.join(out_dir, "checkpoints"))
         checkpoint_prefix = os.path.join(checkpoint_dir, "model")
         if not os.path.exists(checkpoint_dir):
             os.makedirs(checkpoint_dir)

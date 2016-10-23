@@ -20,10 +20,14 @@ Training the network with Tensorflow CPU-only (2013 i7 3770K) took about **70 mi
 To train the network on the Movie Review dataset just run:
 
 ```bash
-./train.py --help
+./train.py
 ```
 
-Training the network on the Customer Product Review data is `coming soon`.
+Training the network on the Customer Product Review data is
+
+```bash
+./train.py --dataset_option="products"
+```
 
 
 ### Evaluating The Network
@@ -33,9 +37,14 @@ You first have to train the network so [see above](#training-the-network).
 To evaluate the network we need to pass in some arguments to the `evaluate.py`. Run this command, replacing `checkpoint_dir` with the last savepoint of the trained model.
 
 ```shell
-python evaluate.py --checkpoint_dir="something"
+python evaluate.py --checkpoint_dir="runs/*some numbers*/checkpoints/"
 ```
 
+or for product review dataset_option
+
+```shell
+python evaluate.py --checkpoint_dir="runs_product/*some numbers*/checkpoints/"
+```
 
 ### Playing With The Network
 
@@ -44,7 +53,7 @@ You first have to train the network so [see above](#training-the-network).
 To test out individual sentences on the network, open `experiment.ipynb` and follow instruction within the notebook.
 
 ```shell
-python experiment.py --checkpoint_dir="something" --sent="This is the sentence you want to test."
+python experiment.py --checkpoint_dir="runs/*some numbers*/checkpoints/" --sent="This is the sentence you want to test."
 ```
 
 ### Credit To
