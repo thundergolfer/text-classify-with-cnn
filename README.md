@@ -5,6 +5,8 @@
 # Text Classifying With A Convolutional Neural Network
 > `python` `tensorflow` `juptyer `
 
+> [![Code Climate](https://codeclimate.com/github/thundergolfer/text-classify-with-cnn/badges/gpa.svg)](https://codeclimate.com/github/thundergolfer/text-classify-with-cnn) [![Test Coverage](https://codeclimate.com/github/thundergolfer/text-classify-with-cnn/badges/coverage.svg)](https://codeclimate.com/github/thundergolfer/text-classify-with-cnn/coverage)
+
 Easy to follow text classifying implementation using a Conv. Neural Network (Tensorflow)
 
 #### What You Need
